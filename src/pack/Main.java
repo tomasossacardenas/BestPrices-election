@@ -15,12 +15,11 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		
 		int i=0;
-		int cash=1876;
+		int cash;
 		int price1=-1;
 		int price2=-1;
 		
 		String cases=null;
-		int plata;
 		
 		String strBooksNumber=br.readLine();
 		
@@ -88,7 +87,7 @@ public class Main {
 						searchNumber=temp;
 					}
 					//If the number searched exists
-					if(searchNumberPosition>=0 ) {
+					if(searchNumberPosition>=0 && searchNumberPosition!=m ) {
 						//If the prices has never been changed they are assigned to price1 and price2 and removed from the list
 						if(price1<0 && price2<0) {
 							price1=num;
@@ -126,9 +125,14 @@ public class Main {
 					else {
 						//If is the first iteration
 						if(i==0 && searchNumberPosition>=0) {
-						price1=num;
-						price2=searchNumber;
-						prices.remove(m);
+							if(searchNumberPosition==m) {
+								prices.remove(m);
+							}
+							else {
+								price1=num;
+								price2=searchNumber;
+								prices.remove(m);
+							}
 						}
 						//if is not the first iteration
 						else {
@@ -138,7 +142,7 @@ public class Main {
 					
 					i++;
 				}
-				message="Peter should buy books whose prices are "+price2+" and "+price1;
+				message="Peter should buy books whose prices are "+price2+" and "+price1+"."+"\n";
 				return message;
 				
 	}
