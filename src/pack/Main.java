@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Main {
@@ -28,7 +29,7 @@ public class Main {
 				cases=br.readLine();
 				cash=Integer.parseInt(br.readLine());
 				prices=convertStringToIntegerArray(cases);
-				SortPricesList();
+				Collections.sort(prices);
 				int pos= binarySearch(prices,cash);
 				deletePrices(pos);
 				bw.write(booksElection(cash, price1, price2, i)+"\n");
@@ -155,17 +156,6 @@ public class Main {
 		}
 		return prices;
 		
-	}
-	
-	public static void SortPricesList() {
-		for(int i=1;i<prices.size();i++) {
-			for(int j=i; j>0 && prices.get(j-1)>prices.get(j);j--) {
-				int temp=prices.get(j);
-				prices.set(j, prices.get(j-1));
-				prices.set(j-1, temp);
-				
-			}
-		}
 	}
 
 }
